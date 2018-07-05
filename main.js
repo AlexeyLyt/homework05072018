@@ -39,29 +39,88 @@
 
     document.addEventListener('DOMContentLoaded', function(){
         
-        getAjaxData('/homework05072018/getCatalog.php', function(data){
+        getAjaxData('/getCatalog.php', function(data){
             // console.log(JSON.parse(data)); //- тут у меня ничего не работает | Теперь работает
             JSON.parse(data).forEach(function(values) {
                 var boxParent = document.getElementById('box');
                 // console.log(box);
-                var itemChild = document.createElement('div');
-                itemChild.classList.add('item-box');
-                itemChild.setAttribute('data-id', values['id']);
-                itemChild.innerHTML = '<img class="img-item" src="/homework05072018/'+values['src']+'">'+ '<div class="name">'+ values['name']+'</div>'+"<div class='price'>"+values['price']+"&#8381;</div><div class='more'>Подробнее</div>";
-                boxParent.appendChild(itemChild);
+                // var itemChild = document.createElement('div');
+                // itemChild.classList.add('item-box');
+                
+                // itemChild.innerHTML = '<img class="img-item" src="'+values['src']+'">'+ '<div class="name">'+ values['name']+'</div>'+"<div class='price'>"+values['price']+"&#8381;</div><div class='more'>Подробнее</div>";
+                // boxParent.appendChild(itemChild);
 
-                itemChild.addEventListener('click', function(){
+                var productFullId = document.createElement('div');
+                productFullId.classList.add('item-box');
+                boxParent.appendChild(productFullId);
+                productFullId.setAttribute('data-id', values['id']);
+
+                var subElements = {
+                    img: document.createElement('img'),
+                    name: document.createElement('div'),
+                    price: document.createElement('div'),
+                    more: document.createElement('div')
+                };
+
+                subElements.img.classList.add('img-item');
+                subElements.img.src = values['src'];
+                subElements.name.innerHTML = values['name'];
+                subElements.name.classList.add('name');
+                subElements.price.innerHTML = values['price'] + "&#8381";
+                subElements.price.classList.add('price');
+                subElements.more.innerHTML = "Подробнее...";
+                subElements.more.classList.add('more');
+
+                productFullId.appendChild(subElements.img);
+                productFullId.appendChild(subElements.name);
+                productFullId.appendChild(subElements.price);
+                productFullId.appendChild(subElements.more);
+
+                productFullId.addEventListener('click', function(){
                     var id = this.getAttribute('data-id');
                     console.log(id);
         
-                    getProductInfoById(id, '/homework05072018/getProduct.php', function(data){
+                    getProductInfoById(id, '/getProduct.php', function(data){
                         document.getElementById('box').innerHTML = "";
                         var currentItem = JSON.parse(data);
                         // console.log(currentItem);
                         currentItem.forEach(function(values){
                             console.log(values['desc']);
-                            itemChild.innerHTML = '<img class="img-item-more" src="/homework05072018/'+values['src']+'">'+ '<div class="name">'+ values['name']+'</div>'+"<div class='desc'>"+values['desc']+'</div>'+"<div class='price'>"+values['price']+"&#8381;</div><div class='count'>Количество на складе: "+values['count']+"</div><div class='back' id='back'>Вернуться назад</div>";
-                            boxParent.appendChild(itemChild);
+                            // itemChild.innerHTML = '<img class="img-item-more" src="'+values['src']+'">'+ '<div class="name">'+ values['name']+'</div>'+"<div class='desc'>"+values['desc']+'</div>'+"<div class='price'>"+values['price']+"&#8381;</div><div class='count'>Количество на складе: "+values['count']+"</div><div class='back' id='back'>Вернуться назад</div>";
+                            // boxParent.appendChild(itemChild);
+
+                            var productFullId = document.createElement('div');
+                            productFullId.classList.add('item-box');
+                            boxParent.appendChild(productFullId);
+
+                            var subElements = {
+                                img: document.createElement('img'),
+                                name: document.createElement('div'),
+                                desc: document.createElement('div'),
+                                price: document.createElement('div'),
+                                count: document.createElement('div'),
+                                back: document.createElement('div')
+                            };
+
+                            subElements.img.classList.add('img-item-more');
+                            subElements.img.src = values['src'];
+                            subElements.name.innerHTML = values['name'];
+                            subElements.name.classList.add('name');
+                            subElements.desc.innerHTML = values['desc'];
+                            subElements.price.innerHTML = values['price'] + "&#8381";
+                            subElements.price.classList.add('price');
+                            subElements.count.innerHTML = "Количество на вымышленном складе: " + values['count'];
+                            subElements.back.innerHTML = "Вернуться назад";
+                            subElements.back.classList.add('back');
+                            subElements.back.setAttribute('id', 'back');
+
+                            productFullId.appendChild(subElements.img);
+                            productFullId.appendChild(subElements.name);
+                            productFullId.appendChild(subElements.desc);
+                            productFullId.appendChild(subElements.price);
+                            productFullId.appendChild(subElements.count);
+                            productFullId.appendChild(subElements.back);
+
                             var backButton = document.getElementById('back');
                             backButton.addEventListener('click', function(){
                                 window.location.reload();

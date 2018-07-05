@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Internet shop</h1>
+    <h1>Online Store</h1>
     <section class="product">
         <h2>Хиты этой недели</h2>
         <div class="product-box" id="box">
