@@ -60,10 +60,13 @@
                         // console.log(currentItem);
                         currentItem.forEach(function(values){
                             console.log(values['desc']);
-                            itemChild.innerHTML = '<img class="img-item-more" src="/homework05072018/'+values['src']+'">'+ '<div class="name">'+ values['name']+'</div>'+"<div class='desc'>"+values['desc']+'</div>'+"<div class='price'>"+values['price']+"&#8381;</div><div class='count'>Количество на складе: "+values['count']+"</div>";
+                            itemChild.innerHTML = '<img class="img-item-more" src="/homework05072018/'+values['src']+'">'+ '<div class="name">'+ values['name']+'</div>'+"<div class='desc'>"+values['desc']+'</div>'+"<div class='price'>"+values['price']+"&#8381;</div><div class='count'>Количество на складе: "+values['count']+"</div><div class='back' id='back'>Вернуться назад</div>";
                             boxParent.appendChild(itemChild);
+                            var backButton = document.getElementById('back');
+                            backButton.addEventListener('click', function(){
+                                window.location.reload();
+                            });
                         });
-
                     });
                 });
             }); 

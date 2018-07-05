@@ -46,6 +46,7 @@ h2 {
 .item-box {
     text-align: center;
     padding: 70px;
+    cursor: pointer;
     &:hover{
         .more{
             display: block;
@@ -56,4 +57,11 @@ h2 {
 .link {
     text-decoration: none;
     color: black;
+}
+
+.back {
+    font-weight: bold;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
 }
