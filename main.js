@@ -71,10 +71,14 @@
                 subElements.more.innerHTML = "Подробнее...";
                 subElements.more.classList.add('more');
 
-                productFullId.appendChild(subElements.img);
-                productFullId.appendChild(subElements.name);
-                productFullId.appendChild(subElements.price);
-                productFullId.appendChild(subElements.more);
+                for(propName in subElements){
+                    productFullId.appendChild(subElements[propName]);
+                }
+
+                // productFullId.appendChild(subElements.img);
+                // productFullId.appendChild(subElements.name);
+                // productFullId.appendChild(subElements.price);
+                // productFullId.appendChild(subElements.more);
 
                 productFullId.addEventListener('click', function(){
                     var id = this.getAttribute('data-id');
@@ -114,12 +118,16 @@
                             subElements.back.classList.add('back');
                             subElements.back.setAttribute('id', 'back');
 
-                            productFullId.appendChild(subElements.img);
-                            productFullId.appendChild(subElements.name);
-                            productFullId.appendChild(subElements.desc);
-                            productFullId.appendChild(subElements.price);
-                            productFullId.appendChild(subElements.count);
-                            productFullId.appendChild(subElements.back);
+                            for(propName in subElements){
+                                productFullId.appendChild(subElements[propName]);
+                            }
+
+                            // productFullId.appendChild(subElements.img);
+                            // productFullId.appendChild(subElements.name);
+                            // productFullId.appendChild(subElements.desc);
+                            // productFullId.appendChild(subElements.price);
+                            // productFullId.appendChild(subElements.count);
+                            // productFullId.appendChild(subElements.back);
 
                             var backButton = document.getElementById('back');
                             backButton.addEventListener('click', function(){
