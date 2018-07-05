@@ -47,7 +47,7 @@
                 var itemChild = document.createElement('div');
                 itemChild.classList.add('item-box');
                 itemChild.setAttribute('data-id', values['id']);
-                itemChild.innerHTML = '<img class="img-item" src="/homework05072018/'+values['src']+'">'+ '<div class="name">'+ values['name']+'</div>'+"<div class='desc'>"+values['desc']+'</div>'+"<div class='price'>"+values['price']+"&#8381;</div><div class='count'>"+values['count']+"</div><div class='more'>Подробнее</div>";
+                itemChild.innerHTML = '<img class="img-item" src="/homework05072018/'+values['src']+'">'+ '<div class="name">'+ values['name']+'</div>'+"<div class='price'>"+values['price']+"&#8381;</div><div class='more'>Подробнее</div>";
                 boxParent.appendChild(itemChild);
 
                 itemChild.addEventListener('click', function(){
@@ -55,9 +55,14 @@
                     console.log(id);
         
                     getProductInfoById(id, '/homework05072018/getProduct.php', function(data){
+                        document.getElementById('box').innerHTML = "";
                         var currentItem = JSON.parse(data);
-                        
-                        console.log(currentItem);
+                        // console.log(currentItem);
+                        currentItem.forEach(function(values){
+                            console.log(values['desc']);
+                            itemChild.innerHTML = '<img class="img-item-more" src="/homework05072018/'+values['src']+'">'+ '<div class="name">'+ values['name']+'</div>'+"<div class='desc'>"+values['desc']+'</div>'+"<div class='price'>"+values['price']+"&#8381;</div><div class='count'>Количество на складе: "+values['count']+"</div>";
+                            boxParent.appendChild(itemChild);
+                        });
 
                     });
                 });

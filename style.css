@@ -23,15 +23,7 @@ h2 {
   color: red;
 }
 
-.count {
-  display: none;
-}
-
 .more {
-  display: none;
-}
-
-.desc {
   display: none;
 }
 
@@ -48,6 +40,11 @@ h2 {
 .img-item {
   width: 140px;
   height: 140px;
+}
+
+.img-item-more {
+  width: 350px;
+  height: 350px;
 }
 
 .item-box {

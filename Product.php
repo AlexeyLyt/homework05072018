@@ -40,7 +40,7 @@
             $response = [];
 
             if($row = $result->fetch(PDO::FETCH_ASSOC)){
-                $response[] = new Product($row['id'], $row['name'], $row['description'], IMAGE_FOLDER.$row['src'], $row['price']." руб.", $row['count']);
+                $response[] = new Product($row['id'], $row['name'], $row['description'], IMAGE_FOLDER.$row['src'], $row['price']." ", $row['count']);
             }
 
             $responseArray = [];
