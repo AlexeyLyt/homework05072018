@@ -39,7 +39,7 @@
 
     document.addEventListener('DOMContentLoaded', function(){
         
-        getAjaxData('/getCatalog.php', function(data){
+        getAjaxData('/homework05072018/getCatalog.php', function(data){
             // console.log(JSON.parse(data)); //- тут у меня ничего не работает | Теперь работает
             JSON.parse(data).forEach(function(values) {
                 var boxParent = document.getElementById('box');
@@ -47,14 +47,14 @@
                 var itemChild = document.createElement('div');
                 itemChild.classList.add('item-box');
                 itemChild.setAttribute('data-id', values['id']);
-                itemChild.innerHTML = '<img class="img-item" src="'+values['src']+'">'+ '<div class="name">'+ values['name']+'</div>'+"<div class='desc'>"+values['desc']+'</div>'+"<div class='price'>"+values['price']+"&#8381;</div><div class='count'>"+values['count']+"</div><div class='more'>Подробнее</div>";
+                itemChild.innerHTML = '<img class="img-item" src="/homework05072018/'+values['src']+'">'+ '<div class="name">'+ values['name']+'</div>'+"<div class='desc'>"+values['desc']+'</div>'+"<div class='price'>"+values['price']+"&#8381;</div><div class='count'>"+values['count']+"</div><div class='more'>Подробнее</div>";
                 boxParent.appendChild(itemChild);
 
                 itemChild.addEventListener('click', function(){
                     var id = this.getAttribute('data-id');
                     console.log(id);
         
-                    getProductInfoById(id, '/getProduct.php', function(data){
+                    getProductInfoById(id, '/homework05072018/getProduct.php', function(data){
                         var currentItem = JSON.parse(data);
                         
                         console.log(currentItem);
