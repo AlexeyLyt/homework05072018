@@ -64,10 +64,13 @@
 
                 subElements.img.classList.add('img-item');
                 subElements.img.src = values['src'];
+
                 subElements.name.innerHTML = values['name'];
                 subElements.name.classList.add('name');
+
                 subElements.price.innerHTML = values['price'] + "&#8381";
                 subElements.price.classList.add('price');
+
                 subElements.more.innerHTML = "Подробнее...";
                 subElements.more.classList.add('more');
 
@@ -108,12 +111,17 @@
 
                             subElements.img.classList.add('img-item-more');
                             subElements.img.src = values['src'];
+
                             subElements.name.innerHTML = values['name'];
                             subElements.name.classList.add('name');
+
                             subElements.desc.innerHTML = values['desc'];
+
                             subElements.price.innerHTML = values['price'] + "&#8381";
                             subElements.price.classList.add('price');
+
                             subElements.count.innerHTML = "Количество на вымышленном складе: " + values['count'];
+                            
                             subElements.back.innerHTML = "Вернуться назад";
                             subElements.back.classList.add('back');
                             subElements.back.setAttribute('id', 'back');
